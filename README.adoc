@@ -6,9 +6,11 @@ server-side rendered client for github coded in about 2-3 days
 
 make a `.env` file with your token inside of it like this:
 
----
+[source]
+----
 GH_API_TOKEN=<your token>
----
+----
+
 
 it's recomended that you create a scoped token with *no permissions*, as codehub does not
 require user authentication of any kind. the reason why it needs a token is because github
