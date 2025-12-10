@@ -2,6 +2,18 @@
 
 server-side rendered client for github coded in about 2-3 days
 
+== features
+
+* can view public user profiles
+* can view public repositories
+
+== planned
+
+* viewing/listing issues
+* viewing/listing pull requests
+* viewing files and directories inside of repositories
+* actually nice homepage
+
 == running
 
 make a `.env` file with your token inside of it like this:
@@ -18,14 +30,7 @@ imposes strict ratelimiting on unauthenticated requests (they even tell you to u
 
 after making the file, you can run the server by running `go run .`
 
-== features
+== why the name
 
-* can view public user profiles
-* can view public repositories
-
-== planned
-
-* viewing/listing issues
-* viewing/listing pull requests
-* viewing files and directories inside of repositories
-* actually nice homepage
+initially, the project was called github-ss (which stands for "`github server side`") but
+then renamed it to codehub to avoid geting decimated by github lol
