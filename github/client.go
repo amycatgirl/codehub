@@ -27,7 +27,7 @@ func (c Client) get(url string, accept *string) (*http.Response, error) {
 }
 
 func (c Client) addRegularHeaders(request *http.Request) {
-	request.Header.Add("User-Agent", "github:amycatgirl/github-ss")
+	request.Header.Add("User-Agent", "github:amycatgirl/codehub")
 	request.Header.Add("X-GitHub-Api-Version", "2022-11-28")
 	// FIXME: REPLACE THE FUCKING TOKEN DON'T LEAK IT DUMBASS
 	request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
