@@ -1,0 +1,52 @@
+{{ template "imports.html" }} {{ template "header.html" }}
+<header>
+    <div class="profile">
+        <div id="pfp-container">
+            {{ if .AvatarURL }}
+            <img src="{{ .AvatarURL }}" width="64" height="64" />
+            {{ else if .GravatarURL }}
+            <img src="{{.GravatarURL}}" width="64" height="64" />
+            {{ else }}
+            <span>TODO</span>
+            {{end}}
+        </div>
+        <div class="info-stack">
+            <h2>
+                {{ if .DisplayName -}} {{ .DisplayName }} {{else -}} {{
+                .Username }} {{- end}}
+            </h2>
+            {{ if .Biography }}
+            <p>{{ .Biography }}</p>
+            {{end}} {{ if .Pronouns }}
+            <span>{{ .Pronouns }}</span>
+            {{end}}
+        </div>
+    </div>
+    <nav class="tabs">
+        <ul>
+            <li class="active">
+                <span class="material-symbols-outlined">book_2</span
+                >Repositories
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <ul class="repository-list">
+        {{ range .Repositories }}
+        <li>
+            <div class="item">
+                <a href="/{{.FullName}}" class="title">{{ .Name }}</a>
+                {{ if .Description}}
+                <p>{{ .Description }}</p>
+                {{ end }}
+                <div class="tags">
+                    {{range .Topics}}
+                    <span>{{.}}</span>
+                    {{end}}
+                </div>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+</main>

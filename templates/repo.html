@@ -1,0 +1,65 @@
+{{ template "imports.html" }} {{ template "header.html" }}
+<header>
+    <div class="top">
+        <div class="name">
+            <span class="material-symbols-outlined">book_2</span>
+            <span class="full_name"
+                ><a id="username" href="/{{.Owner.Username}}"
+                    >{{ .Owner.Username }}</a
+                >&#47;<a href="#" id="repository">{{ .Name }}</a></span
+            >
+        </div>
+        <div class="actions">
+            <div class="mock-button">
+                <span
+                    ><span class="material-symbols-outlined">star</span>
+                    Stars</span
+                >
+                <span>{{ .Stars }}</span>
+            </div>
+            <div class="mock-button">
+                <span
+                    ><span class="material-symbols-outlined">call_split</span>
+                    Forks</span
+                >
+                <span>{{ .Forks }}</span>
+            </div>
+        </div>
+    </div>
+    <nav class="tabs">
+        <ul>
+            <li class="active">
+                <span class="material-symbols-outlined">code</span>Code
+            </li>
+            <li><span class="material-symbols-outlined">error</span>Issues</li>
+            <li>
+                <span class="material-symbols-outlined">merge</span>Pull
+                Requests
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="metadata">
+        <p>
+            {{ if .Description }} {{ .Description}} {{- else }}
+            <i class="muted">No description.</i>
+            {{- end }}
+        </p>
+        <div class="tags">
+            {{ range .Topics }}
+            <span>{{.}}</span>
+            {{end}}
+        </div>
+    </div>
+    {{if .Readme}}
+    <link href="/static/css/gfm.css" rel="stylesheet" />
+    <div class="preview readme">
+        <header>
+            <span class="material-symbols-outlined">two_pager</span>
+            <span>README.md</span>
+        </header>
+        <div class="body">{{ htmlSafe .Readme }}</div>
+    </div>
+    {{end}}
+</main>

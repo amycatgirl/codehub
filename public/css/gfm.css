@@ -1,0 +1,25 @@
+.markdown-heading {
+    display: block;
+    position: relative;
+
+    & a.anchor {
+        --size: 28px;
+        position: absolute;
+        transform: translateY(calc(-50% + 0.3rem));
+        top: 50%;
+        left: -1.3em;
+        opacity: 0;
+
+        width: var(--size);
+        height: var(--size);
+    }
+
+    &:hover > a.anchor {
+        opacity: 1;
+    }
+
+    & :not(a):is(h1, h2) {
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid #d1d9e0b3;
+    }
+}
