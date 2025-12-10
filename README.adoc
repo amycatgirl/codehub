@@ -1,0 +1,28 @@
+= codehub
+
+server-side rendered client for github coded in about 2-3 days
+
+== running
+
+make a `.env` file with your token inside of it like this:
+---
+GH_API_TOKEN=<your token>
+---
+
+it's recomended that you create a scoped token with *no permissions*, as codehub does not
+require user authentication of any kind. the reason why it needs a token is because github
+imposes strict ratelimiting on unauthenticated requests (they even tell you to use a token instead)
+
+after making the file, you can run the server by running `go run .`
+
+== features
+
+* can view public user profiles
+* can view public repositories
+
+== planned
+
+* viewing/listing issues
+* viewing/listing pull requests
+* viewing files and directories inside of repositories
+* actually nice homepage
