@@ -5,6 +5,7 @@ server-side rendered client for github coded in about 2-3 days
 == running
 
 make a `.env` file with your token inside of it like this:
+
 ---
 GH_API_TOKEN=<your token>
 ---
