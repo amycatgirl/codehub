@@ -29,8 +29,7 @@ func (c Client) get(url string, accept *string) (*http.Response, error) {
 func (c Client) addRegularHeaders(request *http.Request) {
 	request.Header.Add("User-Agent", "github:amycatgirl/codehub")
 	request.Header.Add("X-GitHub-Api-Version", "2022-11-28")
-	// FIXME: REPLACE THE FUCKING TOKEN DON'T LEAK IT DUMBASS
-	request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
+	request.Header.Add("Authorization", "Bearer "+c.token)
 }
 
 func (c Client) QueryRepositories(user string) (*[]Repository, error) {
@@ -101,15 +100,12 @@ type Args struct {
 	Token string
 }
 
-func New(args *Args) (*Client, error) {
+func New(token string) (*Client, error) {
 	httpc := http.Client{}
-	if args == nil {
-		return nil, fmt.Errorf("I NEED A TOKEN TO FUNCTION, DUMBASS")
-	}
 
 	client := Client{
 		httpc: &httpc,
-		token: args.Token,
+		token: token,
 	}
 
 	return &client, nil

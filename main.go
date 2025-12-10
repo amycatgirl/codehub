@@ -119,13 +119,11 @@ func New(args Args) (*Server, error) {
 	e.Renderer = t
 	e.Use(middleware.Logger())
 	httpd := http.Server{
-		Addr:    ":8080",
+		Addr:    args.Addr,
 		Handler: e,
 	}
 
-	ghc, err := github.New(&github.Args{
-		Token: "",
-	})
+	ghc, err := github.New(args.GithubToken)
 	if err != nil {
 		return nil, err
 	}
@@ -144,9 +142,10 @@ func main() {
 		panic(err)
 	}
 
+	token := os.Getenv("GH_API_TOKEN")
 	s, err := New(Args{
 		Addr:        ":8080",
-		GithubToken: os.Getenv("GH_API_TOKEN"),
+		GithubToken: token,
 	})
 	if err != nil {
 		panic(err)
